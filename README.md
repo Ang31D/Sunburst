@@ -30,5 +30,5 @@ cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' 
 
 ## Decode base64 and Decompress the values
 ```
-cat OIBL.Unzip.b64 | head -n 10 | python ../tools/dencode.py -a | tee OIBL.Unzip.b64.translated
+cat OIBL.Unzip.b64 | python dencode.py -a | tee OIBL.Unzip.b64.translated
 ```

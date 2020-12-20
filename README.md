@@ -25,21 +25,10 @@ C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtM
 
 ## Extract the base64 values
 ```
-cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' | sed 's/Unzip("//g' | sed 's/")$//g' | tee OrionImprovementBusinessLayer.cs.Unzip.b64
+cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' | sed 's/Unzip("//g' | sed 's/")$//g' | tee OIBL.Unzip.b64
 ```
 
 ## Decode base64 and Decompress the values
 ```
-cat OrionImprovementBusinessLayer.cs.Unzip.b64 | head -n 10 | python ../tools/dencode.py -a
-
-Select * From Win32_NetworkAdapterConfiguration where IPEnabled=true# C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==
-Description# c0ktTi7KLCjJzM8DAA==
-MACAddress# 83V0dkxJKUotLgYA
-DHCPEnabled# c/FwDnDNS0zKSU0BAA==
-DHCPServer# c/FwDghOLSpLLQIA
-DNSHostName# c/EL9sgvLvFLzE0FAA==
-DNSDomainSuffixSearchOrder# c/ELdsnPTczMCy5NS8usCE5NLErO8C9KSS0CAA==
-DNSServerSearchOrder# c/ELDk4tKkstCk5NLErO8C9KSS0CAA==
-IPAddress# 8wxwTEkpSi0uBgA=
-IPSubnet# 8wwILk3KSy0BAA==
+cat OIBL.Unzip.b64 | head -n 10 | python ../tools/dencode.py -a | tee OIBL.Unzip.b64.translated
 ```

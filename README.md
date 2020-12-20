@@ -1,7 +1,7 @@
-Malware Analysis of SolarWinds backdoor (Sunburst)<br/>
+# Malware Analysis of SolarWinds backdoor (Sunburst)<br/>
 Sample from https://app.any.run/tasks/4fc6b555-4f9b-4346-8df2-b59e5796eb88/
 
-# decode/encode base64 value (Inflate and Deflate)
+## decode/encode base64 value (Inflate and Deflate)
 ```
 usage: dencode.py [-h] [--encode] [--file FILE] [--value VALUE]
                   [--append-value]
@@ -23,12 +23,12 @@ python dencode.py -v "Select * From Win32_NetworkAdapterConfiguration where IPEn
 C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==
 ```
 
-# Extract the base64 values
+## Extract the base64 values
 ```
 cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' | sed 's/Unzip("//g' | sed 's/")$//g' | tee OrionImprovementBusinessLayer.cs.Unzip.b64
 ```
 
-Decode base64 and Decompress the values
+## Decode base64 and Decompress the values
 ```
 cat OrionImprovementBusinessLayer.cs.Unzip.b64 | head -n 10 | python ../tools/dencode.py -a
 

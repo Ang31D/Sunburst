@@ -1,5 +1,5 @@
 # Malware Analysis of SolarWinds backdoor (Sunburst)<br/>
-Sample from https://app.any.run/tasks/4fc6b555-4f9b-4346-8df2-b59e5796eb88/
+OrionImprovementBusinessLayer.cs extracted from sample at https://app.any.run/tasks/4fc6b555-4f9b-4346-8df2-b59e5796eb88/
 
 ## decode/encode base64 value (Inflate and Deflate)
 ```

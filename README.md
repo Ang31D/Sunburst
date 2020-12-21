@@ -3,16 +3,18 @@ OrionImprovementBusinessLayer.cs extracted from sample at https://app.any.run/ta
 
 ## decode/encode base64 value (Inflate and Deflate)
 ```
-usage: dencode.py [-h] [--encode] [--file FILE] [--value VALUE]
-                  [--append-value]
+usage: dencode.py [-h] [--file FILE] [--value VALUE] [--append-value] [--separator SEPARATOR] [--encode] [--hash]
 
 optional arguments:
   -h, --help            show this help message and exit
-  --encode, -e          use to encode instead of decode
   --file FILE, -f FILE  file with content to encode/decode
   --value VALUE, -v VALUE
                         value to encode/decode
   --append-value, -a    append ' # <value>' after decoded/encoded value
+  --separator SEPARATOR, -s SEPARATOR
+                        value to separate the appending (default: '# ')
+  --encode, -e          use to encode instead of decode
+  --hash, -H            hash the value
 ```
 
 ```

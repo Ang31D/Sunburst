@@ -27,7 +27,7 @@ python3 dencode.py -v "Select * From Win32_NetworkAdapterConfiguration where IPE
 C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==
 ```
 
-## Get hash of string
+## Get hash for string
 ```
 python3 dencode.py -v "pexplorer" -H
 9903758755917170407

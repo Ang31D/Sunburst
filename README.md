@@ -3,7 +3,7 @@ OrionImprovementBusinessLayer.cs extracted from sample at https://app.any.run/ta
 
 ## decode/encode base64 value (Inflate and Deflate)
 ```
-usage: dencode.py [-h] [--file FILE] [--value VALUE] [--append-value] [--separator SEPARATOR] [--encode] [--hash]
+usage: dencode.py [-h] [--file FILE] [--value VALUE] [--append-value] [--reverse-append] [--separator SEPARATOR] [--encode] [--hash]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -11,6 +11,7 @@ optional arguments:
   --value VALUE, -v VALUE
                         value to encode/decode
   --append-value, -a    append ' # <value>' after decoded/encoded value
+  --reverse-append, -A  prefix '<value># ' before decoded/encoded value
   --separator SEPARATOR, -s SEPARATOR
                         value to separate the appending (default: '# ')
   --encode, -e          use to encode instead of decode
@@ -37,6 +38,10 @@ echo pexplorer | python3 dencode.py -H -a -s " "
 echo "procexp,procexp64" | tr "," "\n" | python3 dencode.py -H -a -s " "
 6491986958834001955 procexp
 27407921587843457 procexp64
+
+echo "procexp,procexp64" | tr "," "\n" | python3 dencode.py -H -A -s " " 
+procexp 6491986958834001955
+procexp64 27407921587843457
 ```
 
 ## Extract the base64 values

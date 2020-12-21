@@ -31,8 +31,6 @@ C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtM
 ```
 python3 dencode.py -v "pexplorer" -H
 9903758755917170407
-
-9903758755917170407# pexplorer
 echo pexplorer | python3 dencode.py -H -a -s " " 
 9903758755917170407 pexplorer
 echo pexplorer | python3 dencode.py -H -A -s " " 

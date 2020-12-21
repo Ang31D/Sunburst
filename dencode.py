@@ -87,7 +87,7 @@ class ZipHelper(object):
    """
    @staticmethod
    def Compress(input):
-      result = zlib.compress(input)
+      result = zlib.compress(input.encode())
       return result[2:-4]
 
    """
@@ -135,7 +135,7 @@ class ZipHelper(object):
    """
    @staticmethod
    def Zip(input):
-      return base64.b64encode(ZipHelper.Compress(input))
+      return base64.b64encode(ZipHelper.Compress(input)).decode()
 
    """
    // Token: 0x060009C6 RID: 2502 RVA: 0x00046A40 File Offset: 0x00044C40
@@ -160,7 +160,7 @@ class ZipHelper(object):
    """
    @staticmethod
    def Unzip(input):
-      return ZipHelper.Decompress(ZipHelper.FromBase64String(input))
+      return ZipHelper.Decompress(ZipHelper.FromBase64String(input)).decode()
 
 data = []
 if (select.select([sys.stdin,],[],[],0.0)[0]):

@@ -53,3 +53,8 @@ cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' 
 ```
 cat OIBL.Unzip.b64 | while read b64; do decoded=$(echo $b64 | python3 dencode.py); echo "$decoded # $b64"; done | tee OIBL.Unzip.b64.translated
 ```
+
+## Extract hardcoded hashes
+```
+cat OrionImprovementBusinessLayer.cs | grep -Eo "[0-9]+UL"
+```

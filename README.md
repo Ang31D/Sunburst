@@ -49,6 +49,11 @@ cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' 
 ## Decode & Decompress base64 values
 ```
 cat OIBL.Unzip.b64 | python3 dencode.py -a -s " # " | tee OIBL.Unzip.b64.translate
+cat OIBL.Unzip.b64 | python3 dencode.py | tee OIBL.Unzip.b64.decompressed
+```
+## Hash Decompress base64 values
+```
+cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee OIBL.Unzip.b64.decompressed.hashed
 ```
 
 ## Extract hardcoded hashes

@@ -56,5 +56,5 @@ cat OIBL.Unzip.b64 | while read b64; do decoded=$(echo $b64 | python3 dencode.py
 
 ## Extract hardcoded hashes
 ```
-cat OrionImprovementBusinessLayer.cs | grep -Eo "[0-9]+UL"
+cat OrionImprovementBusinessLayer.cs | grep -Eo "[0-9]+UL" | sed 's/UL$//g' | tee hardcoded_hashes.txt
 ```

@@ -18,11 +18,14 @@ optional arguments:
 ```
 
 ```
-python dencode.py -v "C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA=="
+python3 dencode.py -v "C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA=="
 Select * From Win32_NetworkAdapterConfiguration where IPEnabled=true
 
-python dencode.py -v "Select * From Win32_NetworkAdapterConfiguration where IPEnabled=true" -e
+python3 dencode.py -v "Select * From Win32_NetworkAdapterConfiguration where IPEnabled=true" -e
 C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==
+
+python3 dencode.py -v "pexplorer" -H
+9903758755917170407
 ```
 
 ## Extract the base64 values
@@ -32,5 +35,5 @@ cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' 
 
 ## Decode base64 and Decompress the values
 ```
-cat OIBL.Unzip.b64 | while read b64; do decoded=$(echo $b64 | python dencode.py); echo "$decoded # $b64"; done | tee OIBL.Unzip.b64.translated
+cat OIBL.Unzip.b64 | while read b64; do decoded=$(echo $b64 | python3 dencode.py); echo "$decoded # $b64"; done | tee OIBL.Unzip.b64.translated
 ```

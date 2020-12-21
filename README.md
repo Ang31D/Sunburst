@@ -1,7 +1,7 @@
 # Malware Analysis of SolarWinds backdoor (Sunburst)<br/>
 OrionImprovementBusinessLayer.cs extracted from sample at https://app.any.run/tasks/4fc6b555-4f9b-4346-8df2-b59e5796eb88/
 
-## Python script usage
+## Python script (dencode.py) usage
 ```
 usage: dencode.py [-h] [--file FILE] [--value VALUE] [--append-value] [--reverse-append] [--separator SEPARATOR] [--encode] [--hash]
 

@@ -178,7 +178,7 @@ else:
 for value in data:
    dencoded = ""
    if (args.hash):
-      dencoded = GetHash(value)
+      dencoded = GetHash(value.strip())
    elif (not args.encode):
       dencoded = ZipHelper.Unzip(value.strip()).strip()
    else:

@@ -8,6 +8,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--file", "-f", dest="file", default = "", help="file with content to encode/decode")
 parser.add_argument("--value", "-v", dest="value", default = "", help="value to encode/decode")
 parser.add_argument('--append-value', "-a", dest="append_value", action='store_true', help="append ' # <value>' after decoded/encoded value")
+parser.add_argument('--reverse-append', "-A", dest="reverse_append", action='store_true', help="prefix '<value># ' before decoded/encoded value")
 parser.add_argument("--separator", "-s", dest="separator", default = "# ", help="value to separate the appending (default: '# ')")
 parser.add_argument('--encode', "-e", dest="encode", action='store_true', help="use to encode instead of decode")
 parser.add_argument('--hash', "-H", dest="hash", action='store_true', help="hash the value")
@@ -184,7 +185,10 @@ for value in data:
    else:
       dencoded = ZipHelper.Zip(value.strip()).strip()
 
-   if (args.append_value):
-      print("{}{}{}".format(dencoded, args.separator, value.strip()))
+   if (args.append_value or args.reverse_append):
+      if (args.reverse_append):
+         print("{}{}{}".format(value.strip(), args.separator, dencoded))
+      else:
+         print("{}{}{}".format(dencoded, args.separator, value.strip()))
    else:
       print(dencoded)

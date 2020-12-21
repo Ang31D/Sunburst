@@ -49,9 +49,9 @@ echo "procexp,procexp64" | tr "," "\n" | python3 dencode.py -H -a -s " "
 cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' | sed 's/Unzip("//g' | sed 's/")$//g' | tee OIBL.Unzip.b64
 ```
 
-## Decode base64 and Decompress the values
+## Decode & Decompress base64 values
 ```
-cat OIBL.Unzip.b64 | while read b64; do decoded=$(echo $b64 | python3 dencode.py); echo "$decoded # $b64"; done | tee OIBL.Unzip.b64.translated
+cat OIBL.Unzip.b64 | python3 dencode.py -a -s " # " | tee OIBL.Unzip.b64.translate
 ```
 
 ## Extract hardcoded hashes

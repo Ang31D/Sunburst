@@ -42,13 +42,6 @@ private static ulong GetHash(string s)
    return num ^ 6605813339339102567UL;
 }
 """
-"""
-def GetHash(s):
-   num = 14695981039346656037
-   for b in s.encode():
-      num = (num^int(b)) * 1099511628211
-   return int(bin(num ^ 6605813339339102567)[-64:], 2)
-"""
 def GetHash(input):
     overflow = lambda num : num & ~(-1 << 64)
     num = 14695981039346656037

@@ -34,7 +34,7 @@ echo pexplorer | python3 dencode.py -H -a
 14549110565813358105# pexplorer
 echo pexplorer | python3 dencode.py -H -a -s " " 
 14549110565813358105 pexplorer
-cho pexplorer | python3 dencode.py -H -A -s " " 
+echo pexplorer | python3 dencode.py -H -A -s " " 
 pexplorer 9903758755917170407
 
 echo "procexp,procexp64" | tr "," "\n" | python3 dencode.py -H -a -s " "

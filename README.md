@@ -1,7 +1,7 @@
 # Malware Analysis of SolarWinds backdoor (Sunburst)<br/>
 OrionImprovementBusinessLayer.cs extracted from sample at https://app.any.run/tasks/4fc6b555-4f9b-4346-8df2-b59e5796eb88/
 
-## python3 dencode.py -h
+## Python script usage
 ```
 usage: dencode.py [-h] [--file FILE] [--value VALUE] [--append-value] [--reverse-append] [--separator SEPARATOR] [--encode] [--hash]
 
@@ -18,7 +18,7 @@ optional arguments:
   --hash, -H            hash the value
 ```
 
-## decode/encode base64 value (Inflate and Deflate)
+## Decode/encode base64 value (Inflate and Deflate)
 ```
 python3 dencode.py -v "C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA=="
 Select * From Win32_NetworkAdapterConfiguration where IPEnabled=true
@@ -27,7 +27,7 @@ python3 dencode.py -v "Select * From Win32_NetworkAdapterConfiguration where IPE
 C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==
 ```
 
-## get hash of string
+## Get hash of string
 ```
 python3 dencode.py -v "pexplorer" -H
 9903758755917170407

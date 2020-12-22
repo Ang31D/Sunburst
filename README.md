@@ -58,7 +58,7 @@ cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee OIBL.Unz
 
 ## Extract hardcoded hashes
 ```
-cat OrionImprovementBusinessLayer.cs | grep -Eo "[0-9]+UL" | sed 's/UL$//g' | tee hardcoded_hashes.txt
+cat OrionImprovementBusinessLayer.cs | grep -Eo "[0-9]+UL" | sed 's/UL$//g' | tee hashes/OIBL.hardcoded_hashes.txt
 ```
 
 ## Extract printable characters from sample binary

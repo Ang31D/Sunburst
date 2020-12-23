@@ -8,6 +8,7 @@ https://docs.google.com/spreadsheets/d/1u0_Df5OMsdzZcTkBDiaAtObbIOkMa5xbeXdKk_k0
 
 ## Tools
 ### Python script (dencode.py) usage
+Custom python script to decode & encode base64 value and generate 'FNV-1a 64bit XOR' hash from value.
 ```
 usage: dencode.py [-h] [--file FILE] [--value VALUE] [--append-value] [--reverse-append] [--separator SEPARATOR] [--encode] [--hash]
 
@@ -24,7 +25,7 @@ optional arguments:
   --hash, -H            hash the value
 ```
 
-## Decode/encode base64 value (Inflate and Deflate)
+#### Decode/encode base64 value (Inflate and Deflate)
 ```
 python3 dencode.py -v "C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA=="
 Select * From Win32_NetworkAdapterConfiguration where IPEnabled=true
@@ -33,7 +34,7 @@ python3 dencode.py -v "Select * From Win32_NetworkAdapterConfiguration where IPE
 C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==
 ```
 
-## Get hash for string
+#### Get hash for string
 ```
 python3 dencode.py -v "pexplorer" -H
 9903758755917170407

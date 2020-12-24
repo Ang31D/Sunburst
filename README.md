@@ -155,8 +155,8 @@ cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee hashes/O
 
 ### List matching hashes between hachcat_team and decompressed base64
 ```
-cat OIBL.Unzip.b64.decompressed.* | sort -u | cut -d " " -f 1 > OIBL.Unzip.b64.decompressed.unique_hashes_only
-cat hashcat_team.cracked_hashes.txt | cut -d " " -f 1 | sort -u > hashcat_team.cracked_hashes_only
-cat hashcat_team.cracked_hashes_only OIBL.Unzip.b64.decompressed.unique_hashes_only | sort | uniq -cd | sed 's/^[ \t]*//g'
+cat hashed/OIBL.Unzip.b64.decompressed.* | sort -u | cut -d " " -f 1 > hashed/OIBL.Unzip.b64.decompressed.unique_hashes_only
+cat hashed/hashcat_team.cracked_hashes.txt | cut -d " " -f 1 | sort -u > hashed/hashcat_team.cracked_hashes_only
+cat hashed/hashcat_team.cracked_hashes_only hashed/OIBL.Unzip.b64.decompressed.unique_hashes_only | sort | uniq -cd | sed 's/^[ \t]*//g'
 ```
 This produced none matching hashes.

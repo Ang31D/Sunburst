@@ -61,6 +61,12 @@ $ cat values.txt | python3 dencode.py -H -a -s " "
 ```
 
 ### Quick scripts
+#### Decode base64 string
+```
+$ tools/decode_b64.sh C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==
+Select * From Win32_NetworkAdapterConfiguration where IPEnabled=true
+```
+
 #### Hash a string in 'FNV-1a 64bit XOR' format
 ```
 $ tools/hash_value.sh Test

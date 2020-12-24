@@ -61,7 +61,7 @@ $ cat values.txt | python3 dencode.py -H -a -s " "
 ```
 
 ### Quick tools
-Hash a string in 'FNV-1a 64bit XOR' format
+#### Hash a string in 'FNV-1a 64bit XOR' format
 ```
 $ tools/hash_value.sh Test
 9212244707478111842 Test
@@ -70,7 +70,7 @@ $ tools/hash_value.sh test
 11694290038524490306 test
 ```
 
-Get result from cracked hashes based on string
+#### Get result from cracked hashes based on string
 ```
 $ tools/get_hash.sh accept
 2734787258623754862 accept
@@ -79,13 +79,13 @@ $ tools/get_hash.sh Accept
 2734787258623754862 accept
 ```
 
-Get result from cracked hashes based on hash
+#### Get result from cracked hashes based on hash
 ```
 $ tools/lookup_hash.sh 2734787258623754862
 2734787258623754862 accept
 ```
 
-Get result from cracked hashes based on matching "value"
+#### Get result from cracked hashes based on matching "value"
 ```
 $ tools/find_match.sh ui
 607197993339007484 egui
@@ -122,27 +122,27 @@ $ tools/find_match.sh 123
 
 ## Output
 ### Extract sample data
-Extract printable characters from sample binary
+#### Extract printable characters from sample binary
 ```
 strings 32519b85c0b422e4656de6e6c41878e95fd95026267daab4215ee59c107d6c77.bin | strings | tee sample.bin.strings
 cat sample.bin.strings | tr '[:upper:]' '[:lower:]' | tee sample.bin.strings.lowercase
 ```
-Extract hardcoded base64 values from source
+#### Extract hardcoded base64 values from source
 ```
 cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' | sed 's/Unzip("//g' | sed 's/")$//g' | tee OIBL.Unzip.b64
 ```
-Extract hardcoded 'FNV-1a 64bit XOR' hashes from source
+#### Extract hardcoded 'FNV-1a 64bit XOR' hashes from source
 ```
 cat OrionImprovementBusinessLayer.cs | grep -Eo "[0-9]+UL" | sed 's/UL$//g' | tee hashes/OIBL.hardcoded_hashes.txt
 ```
 
 ### Decode extracted data
-Decode decompressed base64 values
+#### Decode decompressed base64 values
 ```
 cat OIBL.Unzip.b64 | python3 dencode.py -a -s " # " | tee OIBL.Unzip.b64.translate
 cat OIBL.Unzip.b64 | python3 dencode.py | tee OIBL.Unzip.b64.decompressed
 ```
-Hash decompressed base64 values
+#### Hash decompressed base64 values
 ```
 cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee OIBL.Unzip.b64.decompressed.hashed
 ```

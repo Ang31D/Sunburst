@@ -150,7 +150,7 @@ cat OIBL.Unzip.b64 | python3 dencode.py | tee OIBL.Unzip.b64.decompressed
 ```
 #### Hash decompressed base64 values
 ```
-cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee OIBL.Unzip.b64.decompressed.hashed
+cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee hashes/OIBL.Unzip.b64.decompressed.hashed
 ```
 
 ### List matching hashes between hachcat_team and decompressed base64

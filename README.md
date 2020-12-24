@@ -153,10 +153,20 @@ cat OIBL.Unzip.b64 | python3 dencode.py | tee OIBL.Unzip.b64.decompressed
 cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee hashes/OIBL.Unzip.b64.decompressed.hashed
 ```
 
-### List matching hashes between hachcat_team and decompressed base64
+### Find known hashed "strings" matching hardcoded hashes
+file format: <hash> <string>
 ```
-cat hashed/OIBL.Unzip.b64.decompressed.* | sort -u | cut -d " " -f 1 > hashed/OIBL.Unzip.b64.decompressed.unique_hashes_only
-cat hashed/hashcat_team.cracked_hashes.txt | cut -d " " -f 1 | sort -u > hashed/hashcat_team.cracked_hashes_only
-cat hashed/hashcat_team.cracked_hashes_only hashed/OIBL.Unzip.b64.decompressed.unique_hashes_only | sort | uniq -cd | sed 's/^[ \t]*//g'
+$ cat hashed/sample.bin.strings.lowercase.hashes_only hashed/OIBL.Unzip.b64.decompressed.lowercase.hashed | sort -u > hashed/known_unique_hashes_only.txt
+$ cat hashed/known_unique_hashes_only.txt hashed/OIBL.hardcoded_hashes.txt | sort | uniq -cd | sed 's/^[ \t]*//g' | cut -d " " -f 2
+11266044540366291518
+12445177985737237804
+14710585101020280896
+15695338751700748390
+3200333496547938354
+6116246686670134098
+8698326794961817906
+8873858923435176895
+  
+// find files with <hash>
+$ grep -R --color=always <hash> *
 ```
-This produced none matching hashes.

@@ -60,18 +60,83 @@ echo "procexp,procexp64" | tr "," "\n" | python3 dencode.py -H -a -s " "
 cat values.txt | python3 dencode.py -H -a -s " "
 ```
 
+### Quick tools
+Hash a string in 'FNV-1a 64bit XOR' format
+```
+tools/hash_value.sh Test
+9212244707478111842 Test
+
+tools/hash_value.sh test
+11694290038524490306 test
+```
+
+Get result from cracked hashes based on string
+```
+tools/get_hash.sh accept
+2734787258623754862 accept
+
+tools/get_hash.sh Accept
+2734787258623754862 accept
+```
+
+Get result from cracked hashes based on hash
+```
+tools/lookup_hash.sh 2734787258623754862
+2734787258623754862 accept
+```
+
+Get result from cracked hashes based on matching "value"
+```
+tools/find_match.sh ui
+607197993339007484 egui
+9149947745824492274 jd-gui
+11818825521849580123 avastui
+12709986806548166638 avgui
+13581776705111912829 ksdeui
+13655261125244647696 f-secure webui daemon
+14513577387099045298 eguiproxy
+14971809093655817917 fswebuid
+18147627057830191163 avpui
+
+tools/find_match.sh mon
+397780960855462669 hexisfsmonitor.sys
+2128122064571842954 procmon
+2597124982561782591 apimonitor-x64
+2600364143812063535 apimonitor-x86
+3538022140597504361 sysmon64
+7810436520414958497 diskmon
+12343334044036541897 sentinelmonitor.sys
+13655261125244647696 f-secure webui daemon
+14111374107076822891 sysmon
+15587050164583443069 eamonm
+18294908219222222902 regmon
+
+tools/find_match.sh 123
+7412338704062093516 ffdec
+8760312338504300643 task explorer-64
+10374841591685794123 win64_remotex64
+10501212300031893463 microsoft.tri.sensor
+11818825521849580123 avastui
+12343334044036541897 sentinelmonitor.sys
+```
+
 ## Output
-### Extract printable characters from sample binary
+### Extract sample data
+Extract printable characters from sample binary
 ```
 strings 32519b85c0b422e4656de6e6c41878e95fd95026267daab4215ee59c107d6c77.bin | strings | tee sample.bin.strings
 cat sample.bin.strings | tr '[:upper:]' '[:lower:]' | tee sample.bin.strings.lowercase
 ```
-
-### Compressed base64 values
-Extract hardcoded base64 values
+Extract hardcoded base64 values from source
 ```
 cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' | sed 's/Unzip("//g' | sed 's/")$//g' | tee OIBL.Unzip.b64
 ```
+Extract hardcoded 'FNV-1a 64bit XOR' hashes from source
+```
+cat OrionImprovementBusinessLayer.cs | grep -Eo "[0-9]+UL" | sed 's/UL$//g' | tee hashes/OIBL.hardcoded_hashes.txt
+```
+
+### Decode extracted data
 Decode decompressed base64 values
 ```
 cat OIBL.Unzip.b64 | python3 dencode.py -a -s " # " | tee OIBL.Unzip.b64.translate
@@ -80,9 +145,4 @@ cat OIBL.Unzip.b64 | python3 dencode.py | tee OIBL.Unzip.b64.decompressed
 Hash decompressed base64 values
 ```
 cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee OIBL.Unzip.b64.decompressed.hashed
-```
-
-### Extract hardcoded 'FNV-1a 64bit XOR' hashes
-```
-cat OrionImprovementBusinessLayer.cs | grep -Eo "[0-9]+UL" | sed 's/UL$//g' | tee hashes/OIBL.hardcoded_hashes.txt
 ```

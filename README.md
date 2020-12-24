@@ -2,6 +2,7 @@
 ## Notes
 ### Sample
 OrionImprovementBusinessLayer.cs was extracted from sample available at https://app.any.run/tasks/4fc6b555-4f9b-4346-8df2-b59e5796eb88/
+
 ### Cracked Hashes
 hashes/hashcat_team.cracked_hashes.txt contains all recovered strings by the Hashcat team available at:<br>
 https://docs.google.com/spreadsheets/d/1u0_Df5OMsdzZcTkBDiaAtObbIOkMa5xbeXdKk_k0vWs/edit#gid=0
@@ -59,28 +60,29 @@ echo "procexp,procexp64" | tr "," "\n" | python3 dencode.py -H -a -s " "
 cat values.txt | python3 dencode.py -H -a -s " "
 ```
 
-## Extract the base64 values
+## Output
+### Extract printable characters from sample binary
+```
+strings 32519b85c0b422e4656de6e6c41878e95fd95026267daab4215ee59c107d6c77.bin | strings | tee sample.bin.strings
+cat sample.bin.strings | tr '[:upper:]' '[:lower:]' | tee sample.bin.strings.lowercase
+```
+
+### Compressed base64 values
+Extract hardcoded base64 values
 ```
 cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' | sed 's/Unzip("//g' | sed 's/")$//g' | tee OIBL.Unzip.b64
 ```
-
-## Decode & Decompress base64 values
+Decode decompressed base64 values
 ```
 cat OIBL.Unzip.b64 | python3 dencode.py -a -s " # " | tee OIBL.Unzip.b64.translate
 cat OIBL.Unzip.b64 | python3 dencode.py | tee OIBL.Unzip.b64.decompressed
 ```
-## Hash Decompress base64 values
+Hash decompressed base64 values
 ```
 cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee OIBL.Unzip.b64.decompressed.hashed
 ```
 
-## Extract hardcoded hashes
+### Extract hardcoded 'FNV-1a 64bit XOR' hashes
 ```
 cat OrionImprovementBusinessLayer.cs | grep -Eo "[0-9]+UL" | sed 's/UL$//g' | tee hashes/OIBL.hardcoded_hashes.txt
-```
-
-## Extract printable characters from sample binary
-```
-strings 32519b85c0b422e4656de6e6c41878e95fd95026267daab4215ee59c107d6c77.bin | strings | tee sample.bin.strings
-cat sample.bin.strings | tr '[:upper:]' '[:lower:]' | tee sample.bin.strings.lowercase
 ```

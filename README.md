@@ -26,12 +26,18 @@ optional arguments:
 ```
 
 #### Decode/encode base64 value (Inflate and Deflate)
+Decode value(s)
 ```
 python3 dencode.py -v "C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA=="
 Select * From Win32_NetworkAdapterConfiguration where IPEnabled=true
 
+cat base64_list.txt | python3 dencode.py
+```
+Encode value(s)
+```
 python3 dencode.py -v "Select * From Win32_NetworkAdapterConfiguration where IPEnabled=true" -e
 C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==
+cat values.txt | python3 dencode.py -e
 ```
 
 #### Get hash for string

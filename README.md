@@ -44,50 +44,50 @@ cat values.txt | python3 dencode.py -e
 
 #### Get hash for string
 ```
-python3 dencode.py -v "pexplorer" -H
+$ python3 dencode.py -v "pexplorer" -H
 9903758755917170407
 
-echo pexplorer | python3 dencode.py -H -a -s " " 
+$ echo pexplorer | python3 dencode.py -H -a -s " " 
 9903758755917170407 pexplorer
 
-echo pexplorer | python3 dencode.py -H -A -s " " 
+$ echo pexplorer | python3 dencode.py -H -A -s " " 
 pexplorer 9903758755917170407
 
-echo "procexp,procexp64" | tr "," "\n" | python3 dencode.py -H -a -s " "
+$ echo "procexp,procexp64" | tr "," "\n" | python3 dencode.py -H -a -s " "
 6491986958834001955 procexp
 27407921587843457 procexp64
 
-cat values.txt | python3 dencode.py -H -a -s " "
+$ cat values.txt | python3 dencode.py -H -a -s " "
 ```
 
 ### Quick tools
 Hash a string in 'FNV-1a 64bit XOR' format
 ```
-tools/hash_value.sh Test
+$ tools/hash_value.sh Test
 9212244707478111842 Test
 
-tools/hash_value.sh test
+$ tools/hash_value.sh test
 11694290038524490306 test
 ```
 
 Get result from cracked hashes based on string
 ```
-tools/get_hash.sh accept
+$ tools/get_hash.sh accept
 2734787258623754862 accept
 
-tools/get_hash.sh Accept
+$ tools/get_hash.sh Accept
 2734787258623754862 accept
 ```
 
 Get result from cracked hashes based on hash
 ```
-tools/lookup_hash.sh 2734787258623754862
+$ tools/lookup_hash.sh 2734787258623754862
 2734787258623754862 accept
 ```
 
 Get result from cracked hashes based on matching "value"
 ```
-tools/find_match.sh ui
+$ tools/find_match.sh ui
 607197993339007484 egui
 9149947745824492274 jd-gui
 11818825521849580123 avastui
@@ -98,7 +98,7 @@ tools/find_match.sh ui
 14971809093655817917 fswebuid
 18147627057830191163 avpui
 
-tools/find_match.sh mon
+$ tools/find_match.sh mon
 397780960855462669 hexisfsmonitor.sys
 2128122064571842954 procmon
 2597124982561782591 apimonitor-x64
@@ -111,7 +111,7 @@ tools/find_match.sh mon
 15587050164583443069 eamonm
 18294908219222222902 regmon
 
-tools/find_match.sh 123
+$ tools/find_match.sh 123
 7412338704062093516 ffdec
 8760312338504300643 task explorer-64
 10374841591685794123 win64_remotex64

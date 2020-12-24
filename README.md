@@ -8,7 +8,7 @@ https://docs.google.com/spreadsheets/d/1u0_Df5OMsdzZcTkBDiaAtObbIOkMa5xbeXdKk_k0
 
 ## Tools
 ### Python script (dencode.py) usage
-Custom python script to decode & encode base64 value and generate 'FNV-1a 64bit XOR' hash from value.
+Custom python script to decode & encode compressed base64 value and generate 'FNV-1a 64bit XOR' hash from value.
 ```
 usage: dencode.py [-h] [--file FILE] [--value VALUE] [--append-value] [--reverse-append] [--separator SEPARATOR] [--encode] [--hash]
 

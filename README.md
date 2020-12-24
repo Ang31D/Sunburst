@@ -37,6 +37,7 @@ Encode value(s)
 ```
 python3 dencode.py -v "Select * From Win32_NetworkAdapterConfiguration where IPEnabled=true" -e
 C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==
+
 cat values.txt | python3 dencode.py -e
 ```
 
@@ -44,14 +45,18 @@ cat values.txt | python3 dencode.py -e
 ```
 python3 dencode.py -v "pexplorer" -H
 9903758755917170407
+
 echo pexplorer | python3 dencode.py -H -a -s " " 
 9903758755917170407 pexplorer
+
 echo pexplorer | python3 dencode.py -H -A -s " " 
 pexplorer 9903758755917170407
 
 echo "procexp,procexp64" | tr "," "\n" | python3 dencode.py -H -a -s " "
 6491986958834001955 procexp
 27407921587843457 procexp64
+
+cat values.txt | python3 dencode.py -H -a -s " "
 ```
 
 ## Extract the base64 values

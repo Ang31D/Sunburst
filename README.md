@@ -1,4 +1,4 @@
-# Malware Analysis of SolarWinds backdoor (Sunburst)<br/><br/>
+# Malware Analysis of SolarWinds backdoor (Sunburst)
 ## Notes
 ### Sample
 OrionImprovementBusinessLayer.cs was extracted from sample available at https://app.any.run/tasks/4fc6b555-4f9b-4346-8df2-b59e5796eb88/

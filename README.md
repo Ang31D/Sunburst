@@ -154,7 +154,7 @@ cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee hashes/O
 ```
 
 ### Find known hashed "strings" matching hardcoded hashes
-file format: <hash> <string>
+file format: hash string
 ```
 $ cat hashed/sample.bin.strings.lowercase.hashes_only hashed/OIBL.Unzip.b64.decompressed.lowercase.hashed | sort -u > hashed/known_unique_hashes_only.txt
 $ cat hashed/known_unique_hashes_only.txt hashed/OIBL.hardcoded_hashes.txt | sort | uniq -cd | sed 's/^[ \t]*//g' | cut -d " " -f 2

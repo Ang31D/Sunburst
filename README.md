@@ -60,7 +60,7 @@ $ echo "procexp,procexp64" | tr "," "\n" | python3 dencode.py -H -a -s " "
 $ cat values.txt | python3 dencode.py -H -a -s " "
 ```
 
-### Quick tools
+### Quick scripts
 #### Hash a string in 'FNV-1a 64bit XOR' format
 ```
 $ tools/hash_value.sh Test

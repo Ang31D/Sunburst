@@ -10,7 +10,7 @@ fi
 
 if [[ -p "/dev/stdin" ]]; then
    cat "/dev/stdin" | while read value; do grep -i "${value}" "$hash_file"; done
-else
+elif [[ "${#1}" > 0 ]]; then
    value=$(echo "$1")
    grep -i "${value}" "$hash_file"
 fi

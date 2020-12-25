@@ -10,7 +10,7 @@ fi
 
 if [[ -p "/dev/stdin" ]]; then
    cat "/dev/stdin" | while read value; do hash=$(echo "$value" | tr '[:upper:]' '[:lower:]' | python3 $script_pwd/dencode.py -H); grep -E "^${hash} | ${hash}$" $hash_file; done
-else
+elif [[ "${#1}" > 0 ]]; then
    value=$(echo "$1")
    hash=$(echo "$value" | tr '[:upper:]' '[:lower:]' | python3 $script_pwd/dencode.py -H)
    grep -E "^${hash} | ${hash}$" $hash_file

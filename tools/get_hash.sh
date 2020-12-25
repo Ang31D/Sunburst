@@ -6,7 +6,12 @@ hashes_dir=$(echo "$script_pwd/../hashes")
 value=$(echo "$1")
 hash=$(echo "$value" | tr '[:upper:]' '[:lower:]' | python3 $script_pwd/dencode.py -H)
 
-match=$(grep $hash $hashes_dir/hashcat_team.cracked_hashes.txt)
+hash_file=$(echo "$hashes_dir/hashcat_team.cracked_hashes.txt")
+if [[ "${#2}" > 0 ]]; then
+   hash_file=$(echo "$2")
+fi
+
+match=$(grep "^${hash} " $hash_file)
 
 if [[ "${#match}" > 0 ]]; then
    echo "${match}"

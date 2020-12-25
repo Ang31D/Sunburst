@@ -91,7 +91,7 @@ $ tools/lookup_hash.sh 2734787258623754862
 2734787258623754862 accept
 ```
 
-#### Get result from cracked hashes based on matching "value"
+#### Get result from cracked hashes based on matching "string"
 ```
 $ tools/find_match.sh ui
 607197993339007484 egui

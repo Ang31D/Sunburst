@@ -136,6 +136,9 @@ cat sample.bin.strings | tr '[:upper:]' '[:lower:]' | tee sample.bin.strings.low
 #### Extract hardcoded base64 values from source
 ```
 cat OrionImprovementBusinessLayer.cs | tr " " "\n" | grep -Eo 'Unzip\("(.+)"\)' | sed 's/Unzip("//g' | sed 's/")$//g' | tee OIBL.Unzip.b64
+
+tools/extract_b64.sh OrionImprovementBusinessLayer.cs | tee OIBL.Unzip.b64
+cat OrionImprovementBusinessLayer.cs | tools/extract_b64.sh | tee OIBL.Unzip.b64
 ```
 #### Extract hardcoded 'FNV-1a 64bit XOR' hashes from source
 ```

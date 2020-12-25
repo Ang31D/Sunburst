@@ -11,11 +11,10 @@ https://docs.google.com/spreadsheets/d/1u0_Df5OMsdzZcTkBDiaAtObbIOkMa5xbeXdKk_k0
 ### Python script (dencode.py) usage
 Custom python script to decode & encode compressed base64 value and generate 'FNV-1a 64bit XOR' hash from value.
 ```
-usage: dencode.py [-h] [--file FILE] [--value VALUE] [--append-value] [--reverse-append] [--separator SEPARATOR] [--encode] [--hash]
+usage: dencode.py [-h] [--value VALUE] [--append-value] [--reverse-append] [--separator SEPARATOR] [--encode] [--hash]
 
 optional arguments:
   -h, --help            show this help message and exit
-  --file FILE, -f FILE  file with content to encode/decode
   --value VALUE, -v VALUE
                         value to encode/decode
   --append-value, -a    append ' # <value>' after decoded/encoded value

@@ -66,6 +66,12 @@ tools/extract_b64.sh OrionImprovementBusinessLayer.cs
 cat OrionImprovementBusinessLayer.cs | tools/extract_b64.sh
 ```
 
+#### Extract hardcoded hashes from source
+```
+tools/extract_hashes.sh OrionImprovementBusinessLayer.cs
+cat OrionImprovementBusinessLayer.cs | tools/extract_hashes.sh
+```
+
 #### Decode compressed base64 string
 ```
 $ tools/decode_b64.sh C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==

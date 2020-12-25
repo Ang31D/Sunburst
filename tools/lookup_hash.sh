@@ -10,7 +10,7 @@ if [[ "${#2}" > 0 ]]; then
    hash_file=$(echo "$2")
 fi
 
-match=$(grep -E "^${hash} " $hash_file)
+match=$(grep -E "^${hash} | ${hash}$" $hash_file)
 
 if [[ "${#match}" > 0 ]]; then
    echo "${match}"

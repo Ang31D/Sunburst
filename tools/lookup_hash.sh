@@ -5,7 +5,12 @@ hashes_dir=$(echo "$hash $script_pwd/../hashes")
 
 hash=$(echo "$1")
 
-match=$(grep $hash $hashes_dir/hashcat_team.cracked_hashes.txt)
+hash_file=$(echo "$hashes_dir/hashcat_team.cracked_hashes.txt")
+if [[ "${#2}" > 0 ]]; then
+   hash_file=$(echo "$2")
+fi
+
+match=$(grep -E "^${hash} " $hash_file)
 
 if [[ "${#match}" > 0 ]]; then
    echo "${match}"

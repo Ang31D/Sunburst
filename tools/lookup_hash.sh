@@ -12,9 +12,5 @@ if [[ -p "/dev/stdin" ]]; then
    cat "/dev/stdin" | while read hash; do grep -E "^${hash} | ${hash}$" $hash_file; done
 else
    hash=$(echo "$1")
-   match=$(grep -E "^${hash} | ${hash}$" $hash_file)
-fi
-
-if [[ "${#match}" > 0 ]]; then
-   echo "${match}"
+   grep -E "^${hash} | ${hash}$" $hash_file
 fi

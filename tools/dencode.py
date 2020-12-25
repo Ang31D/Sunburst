@@ -5,7 +5,6 @@ import sys
 import select
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--file", "-f", dest="file", default = "", help="file with content to encode/decode")
 parser.add_argument("--value", "-v", dest="value", default = "", help="value to encode/decode")
 parser.add_argument('--append-value', "-a", dest="append_value", action='store_true', help="append ' # <value>' after decoded/encoded value")
 parser.add_argument('--reverse-append', "-A", dest="reverse_append", action='store_true', help="prefix '<value># ' before decoded/encoded value")
@@ -152,9 +151,6 @@ class ZipHelper(object):
 data = []
 if (select.select([sys.stdin,],[],[],0.0)[0]):
    data = sys.stdin.readlines()
-elif (len(args.file) > 0):
-   with open(args.file, 'r') as f:
-      data = f.readlines()
 elif (len(args.value) > 0):
    data.append(args.value)
 else:

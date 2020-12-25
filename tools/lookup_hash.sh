@@ -10,7 +10,7 @@ fi
 
 if [[ -p "/dev/stdin" ]]; then
    cat "/dev/stdin" | while read hash; do grep -E "^${hash} | ${hash}$" $hash_file; done
-else
+elif [[ "${#1}" > 0 ]]; then
    hash=$(echo "$1")
    grep -E "^${hash} | ${hash}$" $hash_file
 fi

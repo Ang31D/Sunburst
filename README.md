@@ -60,6 +60,12 @@ $ cat values.txt | python3 dencode.py -H -a -s " "
 ```
 
 ### Quick scripts
+#### Extract hardcoded base64 values from source
+```
+tools/extract_b64.sh OrionImprovementBusinessLayer.cs
+cat OrionImprovementBusinessLayer.cs | tools/extract_b64.sh
+```
+
 #### Decode compressed base64 string
 ```
 $ tools/decode_b64.sh C07NSU0uUdBScCvKz1UIz8wzNor3Sy0pzy/KdkxJLChJLXLOz0vLTC8tSizJzM9TKM9ILUpV8AxwzUtMyklNsS0pKk0FAA==
@@ -73,6 +79,10 @@ $ tools/hash_value.sh Test
 
 $ tools/hash_value.sh test
 11694290038524490306 test
+
+$ echo "Test,test" | tr "," "\n" | tools/hash_value.sh 
+9212244707478111842 Test
+11694290038524490306 test
 ```
 
 #### Get result from cracked hashes based on string
@@ -82,11 +92,18 @@ $ tools/get_hash.sh accept
 
 $ tools/get_hash.sh Accept
 2734787258623754862 accept
+
+$ echo "accept,Accept" | tr "," "\n" | tools/get_hash.sh 
+2734787258623754862 accept
+2734787258623754862 accept
 ```
 
 #### Get result from cracked hashes based on hash
 ```
 $ tools/lookup_hash.sh 2734787258623754862
+2734787258623754862 accept
+
+$ echo "2734787258623754862,9212244707478111842" | tr "," "\n" | tools/lookup_hash.sh 
 2734787258623754862 accept
 ```
 

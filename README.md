@@ -198,8 +198,11 @@ $ tools/fetch_procchk.sh http://processchecker.com/developers_info/108693/FireEy
 ```
 We store the following urls in a file called 'urls.txt'.
 * FireEye Inc.
+http://processchecker.com/developers_info/108693/FireEye%20Inc.
 * F-Secure Corporation
+https://www.processchecker.com/developers_info/852/F-Secure%20Corporation
 * Rockwell Automation, Inc.
+https://www.processchecker.com/developers_info/42506/%22Rockwell%20Automation,%20Inc.
 ```
 http://processchecker.com/developers_info/108693/FireEye%20Inc.
 https://www.processchecker.com/developers_info/852/F-Secure%20Corporation

@@ -183,18 +183,46 @@ cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee hashes/O
 
 ### Find known hashed "strings" matching hardcoded hashes
 file format: hash string
+
+#### Generate Known Hashes
+Processchecker.com (https://www.processchecker.com/) contains interesting file names and description that we could try and check if any is referred to in hash-format.
+Under the Developers (http://processchecker.com/developers.php) section we can grab both filename and product. This will be a lenghty task so we'll automate this.
+
+Let's take 'FireEye Inc.' (http://processchecker.com/developers_info/108693/FireEye%20Inc.) as an example.
 ```
-$ cat hashed/sample.bin.strings.lowercase.hashes_only hashed/OIBL.Unzip.b64.decompressed.lowercase.hashed | sort -u > hashed/known_unique_hashes_only.txt
-$ cat hashed/known_unique_hashes_only.txt hashed/OIBL.hardcoded_hashes.txt | sort | uniq -cd | sed 's/^[ \t]*//g' | cut -d " " -f 2
-11266044540366291518
-12445177985737237804
-14710585101020280896
-15695338751700748390
-3200333496547938354
-6116246686670134098
-8698326794961817906
-8873858923435176895
-  
-// find files with <hash>
-$ grep -R --color=always <hash> *
+tools/fetch_procchk.sh http://processchecker.com/developers_info/108693/FireEye%20Inc. | tee known_hashes.txt
+1471486461872767760 fireeye agent
+15695338751700748390 xagt
+17813920015289973162 fireeye agent user notification
+640589622539783622 xagtnotif
+```
+We store the following urls in a file called 'urls.txt'.
+* FireEye Inc.
+* F-Secure Corporation
+* Rockwell Automation, Inc.
+```
+http://processchecker.com/developers_info/108693/FireEye%20Inc.
+https://www.processchecker.com/developers_info/852/F-Secure%20Corporation
+https://www.processchecker.com/developers_info/42506/%22Rockwell%20Automation,%20Inc.
+```
+Let's generate a "known_hashes.txt" file from the result.
+```
+cat urls.txt | while read url; do tools/fetch_procchk.sh $url | tee -a known_hashes.txt ; done
+```
+
+#### Checking for strings from Known/Hardcoded Hashes
+```
+$ cat known_hashes.txt | cut -d " " -f 1 | tools/lookup_hash.sh hashes/OIBL.hardcoded_hashes.txt 
+15695338751700748390 xagt
+640589622539783622 xagtnotif
+10545868833523019926 fsgk32
+12445177985737237804 fsaua
+14055243717250701608 fssm32
+14971809093655817917 fswebuid
+15039834196857999838 fsma32
+17017923349298346219 fsav32
+17978774977754553159 fsorsp
+521157249538507889 fsgk32st
+541172992193764396 fsdevcon
+5587557070429522647 fnrb32
 ```

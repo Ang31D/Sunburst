@@ -13,9 +13,9 @@ if [[ "${#1}" > 0 ]]; then
    end=$(echo $num | cut -d, -f 2)
    sed -n "${start},${end}p" $work_dir/tmp.html > $work_dir/tmp.html.section
    # // hash file(s) name
-   cat $work_dir/tmp.html.section | grep -E "<td><a " | sed 's/.*html">//g' | sed 's/<\/a>.*//g' | $tools_dir/tolower.sh | $tools_dir/basename.sh | sort -u > $work_dir/tmp.result
+   cat $work_dir/tmp.html.section | grep -E "<td><a " | sed 's/.*html">//g' | sed 's/<\/a>.*//g' | tr '[:upper:]' '[:lower:]' | grep -oP ".*(?=[.])" | sort -u > $work_dir/tmp.result
    # // hash file(s) description
-   cat $work_dir/tmp.html.section | grep -E "<td> " | sed 's/.*<td> //g' | sed 's/<\/td>.*//g' | sort -u | grep -Ev "^$" | $tools_dir/tolower.sh >> $work_dir/tmp.result
+   cat $work_dir/tmp.html.section | grep -E "<td> " | sed 's/.*<td> //g' | sed 's/<\/td>.*//g' | sort -u | grep -Ev "^$" | tr '[:upper:]' '[:lower:]' >> $work_dir/tmp.result
    # // output result
    cat $work_dir/tmp.result | sort -u | $tools_dir/hash_value.sh | sort -u
    # // clean-up

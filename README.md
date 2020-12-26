@@ -185,7 +185,7 @@ cat OIBL.Unzip.b64.decompressed | python3 dencode.py -H -a -s " " | tee hashes/O
 file format: hash string
 
 #### Generate Known Hashes
-Processchecker.com (https://www.processchecker.com/) contains interesting file names and description that we could try and check if any is referred to in hash-format.
+Processchecker.com (https://www.processchecker.com/) contains interesting File (process) and Product names that we could try and check if any is referred to in hash-format.
 Under the Developers (http://processchecker.com/developers.php) section we can grab both filename and product. This will be a lenghty task so we'll automate this.
 
 Let's take 'FireEye Inc.' (http://processchecker.com/developers_info/108693/FireEye%20Inc.) as an example.

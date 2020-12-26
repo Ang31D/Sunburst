@@ -209,6 +209,16 @@ Let's generate a "known_hashes.txt" file from the result.
 ```
 cat urls.txt | while read url; do tools/fetch_procchk.sh $url | tee -a known_hashes.txt ; done
 ```
+We can also append some specific filenames, let's take Windows Defender (MsMpEng32.exe).
+```
+$ echo MsMpEng32.exe | tools/tolower.sh | tools/basename.sh | tools/hash_value.sh | cut -d " " -f 1 | tools/lookup_hash.sh
+```
+NO match<br>
+Lets remove the numbers and try again.
+```
+$ echo MsMpEng32.exe | tools/tolower.sh | tools/basename.sh | tools/rmnum.sh | tools/hash_value.sh | cut -d " " -f 1 | tools/lookup_hash.sh 
+5183687599225757871 msmpeng
+```
 
 #### Checking for strings matching Known/Hardcoded Hashes
 ```

@@ -94,7 +94,7 @@ $ echo "Test,test" | tr "," "\n" | tools/hash_value.sh
 11694290038524490306 test
 ```
 
-#### Get result from cracked hashes based on string
+#### Get result from known hashes based on string
 ```
 $ tools/get_hash.sh accept
 2734787258623754862 accept
@@ -107,7 +107,7 @@ $ echo "accept,Accept" | tr "," "\n" | tools/get_hash.sh
 2734787258623754862 accept
 ```
 
-#### Get result from cracked hashes based on hash
+#### Get result from known hashes based on hash
 ```
 $ tools/lookup_hash.sh 2734787258623754862
 2734787258623754862 accept
@@ -116,7 +116,7 @@ $ echo "2734787258623754862,9212244707478111842" | tr "," "\n" | tools/lookup_ha
 2734787258623754862 accept
 ```
 
-#### Get result from cracked hashes based on matching "string"
+#### Get result from known hashes based on matching "string"
 ```
 $ tools/find_match.sh ui
 607197993339007484 egui

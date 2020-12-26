@@ -190,7 +190,7 @@ Under the Developers (http://processchecker.com/developers.php) section we can g
 
 Let's take 'FireEye Inc.' (http://processchecker.com/developers_info/108693/FireEye%20Inc.) as an example.
 ```
-tools/fetch_procchk.sh http://processchecker.com/developers_info/108693/FireEye%20Inc. | tee known_hashes.txt
+$ tools/fetch_procchk.sh http://processchecker.com/developers_info/108693/FireEye%20Inc. | tee known_hashes.txt
 1471486461872767760 fireeye agent
 15695338751700748390 xagt
 17813920015289973162 fireeye agent user notification
@@ -210,7 +210,7 @@ Let's generate a "known_hashes.txt" file from the result.
 cat urls.txt | while read url; do tools/fetch_procchk.sh $url | tee -a known_hashes.txt ; done
 ```
 
-#### Checking for strings from Known/Hardcoded Hashes
+#### Checking for strings matching Known/Hardcoded Hashes
 ```
 $ cat known_hashes.txt | cut -d " " -f 1 | tools/lookup_hash.sh hashes/OIBL.hardcoded_hashes.txt 
 15695338751700748390 xagt

@@ -216,8 +216,7 @@ We can also append some specific filenames, let's take Windows Defender (MsMpEng
 ```
 $ echo MsMpEng32.exe | tools/tolower.sh | tools/basename.sh | tools/hash_value.sh | cut -d " " -f 1 | tools/lookup_hash.sh
 ```
-NO match<br>
-Lets remove the numbers and try again.
+NO match, lets remove the numbers and try again.
 ```
 $ echo MsMpEng32.exe | tools/tolower.sh | tools/basename.sh | tools/rmnum.sh | tools/hash_value.sh | cut -d " " -f 1 | tools/lookup_hash.sh 
 5183687599225757871 msmpeng
